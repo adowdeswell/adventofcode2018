@@ -8,7 +8,8 @@ namespace adventofcode2018
         static void Main(string[] args)
         {
             //Day1();
-            Day2();
+            //Day2();
+            Day3();
         }
 
         static void Day1()
@@ -143,6 +144,53 @@ namespace adventofcode2018
                     }
                 }
             }
+        }
+
+        static void Day3()
+        {
+            Day3_Part1();
+        }
+
+        static void Day3_Part1()
+        {
+            string[] lines = System.IO.File.ReadAllLines("Input/3/input.txt");
+
+            int[,] fabric = new int[1000, 1000];
+
+            foreach (string line in lines)
+            {
+                string[] elements = line.Split(' ');
+
+                string[] coord = elements[2].Split(',');
+                int coordX = System.Convert.ToInt32(coord[0]);
+                int coordY = System.Convert.ToInt32(coord[1].Substring(0, coord[1].Length - 1));
+
+                string[] dim = elements[3].Split('x');
+                int dimX = System.Convert.ToInt32(dim[0]);
+                int dimY = System.Convert.ToInt32(dim[1]);
+
+                for (int x = coordX; x < (coordX + dimX); ++x)
+                {
+                    for (int y = coordY; y < (coordY + dimY); ++y)
+                    {
+                        fabric[x, y]++;
+                    }
+                }
+            }
+
+            int numOverlaps = 0;
+            for (int x = 0; x < 1000; ++x)
+            {
+                for (int y = 0; y < 1000; ++y)
+                {
+                    if (fabric[x, y] > 1)
+                    {
+                        ++numOverlaps;
+                    }
+                }
+            }
+
+            Console.WriteLine("D3P1: " + numOverlaps);
         }
     }
 }
