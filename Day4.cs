@@ -172,7 +172,7 @@ namespace adventofcode2018
                 }
             }
 
-            Console.WriteLine("Guard that has the most minutes asleep = " + maxCountID);
+            //Console.WriteLine("Guard that has the most minutes asleep = " + maxCountID);
 
             maxCount = 0;
             int maxCountIDMinute = 0;
@@ -189,9 +189,28 @@ namespace adventofcode2018
                 }
             }
 
-            Console.WriteLine("Minute guard spends asleep the most = " + maxCountIDMinute);
+            //Console.WriteLine("Minute guard spends asleep the most = " + maxCountIDMinute);
 
             Console.WriteLine("D04P1 = " + (maxCountID * maxCountIDMinute));
+
+            int maxMinutes = 0;
+            int maxMinutesID = 0;
+            int maxMinutesMinute = 0;
+
+            for (int m = 0; m < 60; ++m)
+            {
+                foreach (KeyValuePair<int, int> kvp in sumPerIDPerMinute[m])
+                {
+                    if (kvp.Value > maxMinutes)
+                    {
+                        maxMinutes = kvp.Value;
+                        maxMinutesID = kvp.Key;
+                        maxMinutesMinute = m;
+                    }
+                }
+            }
+
+            Console.WriteLine("D04P2 = " + (maxMinutesID * maxMinutesMinute));
         }
     }
 }
