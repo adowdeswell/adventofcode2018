@@ -33,8 +33,8 @@ namespace adventofcode2018
                     {
                         if (frequencies.Contains(frequency))
                         {
-                            // Part 2: What is the first repeated frequency?
-                            Console.WriteLine("\nD01P2: first repeated frequency = " + frequency);
+                            // Part 2: What is the first frequency your device reaches twice?
+                            Console.WriteLine("\nD01P2: " + frequency);
                             foundRepeat = true;
                         }
                         else
@@ -46,8 +46,8 @@ namespace adventofcode2018
 
                 if (firstLoop)
                 {
-                    // Part 1: What is the resultant frequency?
-                    Console.WriteLine("\nD01P1: frequency = " + frequency);
+                    // Part 1: What is the resulting frequency?
+                    Console.WriteLine("\nD01P1: " + frequency);
                     firstLoop = false;
                 }
             }
@@ -109,7 +109,9 @@ namespace adventofcode2018
             //Console.WriteLine("[info] numTwos = " + numTwos + " : numThrees = " + numThrees);
 
             int checksum = numTwos * numThrees;
-            Console.WriteLine("D02P1: checksum = " + checksum);
+
+            // Part 1: What is the checksum?
+            Console.WriteLine("D02P1: " + checksum);
         }
 
         static void Day2_Part2(string[] lines)
@@ -139,6 +141,7 @@ namespace adventofcode2018
 
                             string lineRemoved = line1.Remove(firstDifferenceIndex, 1);
 
+                            // Part 2: What letters are common between the two correct box IDs?
                             Console.WriteLine("D2P2: " + lineRemoved);
                         }
                     }
@@ -148,33 +151,32 @@ namespace adventofcode2018
 
         static void Day3()
         {
-            Day3_Part1();
-        }
-
-        static void Day3_Part1()
-        {
             string[] lines = System.IO.File.ReadAllLines("Input/3/input.txt");
 
             int[,] fabric = new int[1000, 1000];
+            List<int> intactIndices = new List<int>();
 
-            foreach (string line in lines)
+            for (int i = 0; i < lines.Length; ++i)
             {
-                string[] elements = line.Split(' ');
-
-                string[] coord = elements[2].Split(',');
-                int coordX = System.Convert.ToInt32(coord[0]);
-                int coordY = System.Convert.ToInt32(coord[1].Substring(0, coord[1].Length - 1));
-
-                string[] dim = elements[3].Split('x');
-                int dimX = System.Convert.ToInt32(dim[0]);
-                int dimY = System.Convert.ToInt32(dim[1]);
-
+                GetClaim(lines[i], out int id, out int coordX, out int coordY, out int dimX, out int dimY);
+                
+                bool intact = true;
                 for (int x = coordX; x < (coordX + dimX); ++x)
                 {
                     for (int y = coordY; y < (coordY + dimY); ++y)
                     {
-                        fabric[x, y]++;
+                        if (fabric[x, y] > 0)
+                        {
+                            intact = false;
+                        }
+
+                        ++fabric[x, y];
                     }
+                }
+
+                if (intact)
+                {
+                    intactIndices.Add(i);
                 }
             }
 
@@ -190,7 +192,46 @@ namespace adventofcode2018
                 }
             }
 
+            // Part 1: How many square inches of fabric are within two or more claims?
             Console.WriteLine("D3P1: " + numOverlaps);
+
+            foreach (int index in intactIndices)
+            {
+                GetClaim(lines[index], out int id, out int coordX, out int coordY, out int dimX, out int dimY);
+                
+                bool intact = true;
+                for (int x = coordX; x < (coordX + dimX); ++x)
+                {
+                    for (int y = coordY; y < (coordY + dimY); ++y)
+                    {
+                        if (fabric[x, y] > 1)
+                        {
+                            intact = false;
+                        }
+                    }
+                }
+
+                if (intact)
+                {
+                    // Part 2: What is the ID of the only claim that doesn't overlap?
+                    Console.WriteLine("D3P2: " + id);
+                }
+            }
+        }
+
+        static void GetClaim(string line, out int id, out int coordX, out int coordY, out int dimX, out int dimY)
+        {
+            string[] elements = line.Split(' ');
+
+            id = System.Convert.ToInt32(elements[0].Substring(1));
+
+            string[] coord = elements[2].Split(',');
+            coordX = System.Convert.ToInt32(coord[0]);
+            coordY = System.Convert.ToInt32(coord[1].Substring(0, coord[1].Length - 1));
+
+            string[] dim = elements[3].Split('x');
+            dimX = System.Convert.ToInt32(dim[0]);
+            dimY = System.Convert.ToInt32(dim[1]);
         }
     }
 }
