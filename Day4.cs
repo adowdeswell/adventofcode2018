@@ -24,7 +24,7 @@ namespace adventofcode2018
 
         static List<Entry> _entries = new List<Entry>();
 
-        static public void Part1()
+        static public void Parts1And2()
         {
             Parse();
             Sort();
