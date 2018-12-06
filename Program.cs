@@ -9,7 +9,8 @@ namespace adventofcode2018
         {
             //Day1();
             //Day2();
-            Day3();
+            //Day3();
+            Day4.Parts1And2();
         }
 
         static void Day1()
@@ -142,7 +143,7 @@ namespace adventofcode2018
                             string lineRemoved = line1.Remove(firstDifferenceIndex, 1);
 
                             // Part 2: What letters are common between the two correct box IDs?
-                            Console.WriteLine("D2P2: " + lineRemoved);
+                            Console.WriteLine("D02P2: " + lineRemoved);
                         }
                     }
                 }
@@ -193,7 +194,7 @@ namespace adventofcode2018
             }
 
             // Part 1: How many square inches of fabric are within two or more claims?
-            Console.WriteLine("D3P1: " + numOverlaps);
+            Console.WriteLine("D03P1: " + numOverlaps);
 
             foreach (int index in intactIndices)
             {
@@ -214,7 +215,7 @@ namespace adventofcode2018
                 if (intact)
                 {
                     // Part 2: What is the ID of the only claim that doesn't overlap?
-                    Console.WriteLine("D3P2: " + id);
+                    Console.WriteLine("D03P2: " + id);
                 }
             }
         }
