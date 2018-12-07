@@ -8,12 +8,40 @@ namespace adventofcode2018
 
         static public void Part1()
         {
-            Solve_Part1();
+            int reactedLength = GetReactedPolymerLength(input, ' ');
+
+            // Part 1: How many units remain after fully reacting the polymer you scanned?
+            Console.WriteLine("D05P1: " + reactedLength);
         }
 
-        static void Solve_Part1()
+        static public void Part2()
+        {
+            int minReactedLength = input.Length;
+            int minReactedUnit = ' ';
+
+            for (char c = 'a'; c <= 'z'; ++c)
+            {
+                int reactedLength = GetReactedPolymerLength(input, c);
+                if (reactedLength < minReactedLength)
+                {
+                    minReactedLength = reactedLength;
+                    minReactedUnit = c;
+                }
+            }
+
+            // Part 2: What is the length of the shortest polymer you can produce?
+            Console.WriteLine("D05P2: " + minReactedLength);
+        }
+
+        static int GetReactedPolymerLength(string input, char unitToRemove)
         {
             bool anyReaction;
+
+            if (unitToRemove != ' ')
+            {
+                input = input.Replace(unitToRemove.ToString().ToUpper(), "");
+                input = input.Replace(unitToRemove.ToString().ToLower(), "");
+            }
 
             do
             {
@@ -34,7 +62,7 @@ namespace adventofcode2018
             }
             while (anyReaction);
 
-            Console.WriteLine("D05P1: " + input.Length);
+            return input.Length;
         }
 
         static bool IsReaction(char unit1, char unit2)
