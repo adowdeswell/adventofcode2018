@@ -4,24 +4,30 @@ namespace adventofcode2018
 {
     static class Day5
     {
-        static string input = System.IO.File.ReadAllText("Input/5/input.txt");
+        static string _input = System.IO.File.ReadAllText("Input/5/input.txt");
 
-        static public void Part1()
+        static public void Parts1And2()
         {
-            int reactedLength = GetReactedPolymerLength(input, ' ');
+            Part1();
+            Part2();
+        }
+
+        static void Part1()
+        {
+            int reactedLength = GetReactedPolymerLength(_input, ' ');
 
             // Part 1: How many units remain after fully reacting the polymer you scanned?
             Console.WriteLine("D05P1: " + reactedLength);
         }
 
-        static public void Part2()
+        static void Part2()
         {
-            int minReactedLength = input.Length;
+            int minReactedLength = _input.Length;
             int minReactedUnit = ' ';
 
             for (char c = 'a'; c <= 'z'; ++c)
             {
-                int reactedLength = GetReactedPolymerLength(input, c);
+                int reactedLength = GetReactedPolymerLength(_input, c);
                 if (reactedLength < minReactedLength)
                 {
                     minReactedLength = reactedLength;

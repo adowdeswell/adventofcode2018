@@ -191,7 +191,8 @@ namespace adventofcode2018
 
             //Console.WriteLine("Minute guard spends asleep the most = " + maxCountIDMinute);
 
-            Console.WriteLine("D04P1 = " + (maxCountID * maxCountIDMinute));
+            // Part 1: What is the ID of the guard you chose multiplied by the minute you chose?
+            Console.WriteLine("D04P1: " + (maxCountID * maxCountIDMinute));
 
             int maxMinutes = 0;
             int maxMinutesID = 0;
@@ -210,7 +211,8 @@ namespace adventofcode2018
                 }
             }
 
-            Console.WriteLine("D04P2 = " + (maxMinutesID * maxMinutesMinute));
+            // Part 2: What is the ID of the guard you chose multiplied by the minute you chose?
+            Console.WriteLine("D04P2: " + (maxMinutesID * maxMinutesMinute));
         }
     }
 }
