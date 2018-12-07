@@ -10,7 +10,8 @@ namespace adventofcode2018
             //Day1();
             //Day2();
             //Day3();
-            Day4.Parts1And2();
+            //Day4.Parts1And2();
+            Day5.Part1();
         }
 
         static void Day1()
