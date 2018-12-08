@@ -24,11 +24,11 @@ namespace adventofcode2018
 
         static List<Entry> _entries = new List<Entry>();
 
-        static public void Parts1And2()
+        static public void Solve()
         {
             Parse();
             Sort();
-            Solve();
+            SolveParts1And2();
         }
 
         static void Parse()
@@ -87,7 +87,7 @@ namespace adventofcode2018
             _entries.Sort((a, b) => DateTime.Compare(a._timestamp, b._timestamp));
         }
 
-        static void Solve()
+        static void SolveParts1And2()
         {
             Dictionary<int, int>[] sumPerIDPerMinute = new Dictionary<int, int>[60];
             Dictionary<int, int> minutesPerID = new Dictionary<int, int>();

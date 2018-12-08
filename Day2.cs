@@ -7,13 +7,13 @@ namespace adventofcode2018
     {
         static string[] _lines = System.IO.File.ReadAllLines("Input/2/input.txt");
 
-        static public void Parts1And2()
+        static public void Solve()
         {
-            Part1();
-            Part2();
+            SolvePart1();
+            SolvePart2();
         }
 
-        static void Part1()
+        static void SolvePart1()
         { 
             int numTwos = 0;
             int numThrees = 0;
@@ -65,7 +65,7 @@ namespace adventofcode2018
             Console.WriteLine("D02P1: " + checksum);
         }
 
-        static void Part2()
+        static void SolvePart2()
         {
             foreach (string line1 in _lines)
             {

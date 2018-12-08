@@ -7,7 +7,12 @@ namespace adventofcode2018
     {
         static string[] _lines = System.IO.File.ReadAllLines("Input/3/input.txt");
 
-        static public void Parts1And2()
+        static public void Solve()
+        {
+            SolveParts1And2();
+        }
+
+        static void SolveParts1And2()
         {
             int[,] fabric = new int[1000, 1000];
             List<int> intactIndices = new List<int>();

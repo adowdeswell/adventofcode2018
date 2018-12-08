@@ -7,11 +7,11 @@ namespace adventofcode2018
     {
         static void Main(string[] args)
         {
-            //Day1.Parts1And2();
-            //Day2.Parts1And2();
-            //Day3.Parts1And2();
-            //Day4.Parts1And2();
-            Day5.Parts1And2();
+            //Day1.Solve();
+            //Day2.Solve();
+            //Day3.Solve();
+            //Day4.Solve();
+            Day5.Solve();
         }
     }
 }

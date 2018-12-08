@@ -7,7 +7,12 @@ namespace adventofcode2018
     {
         static string[] _lines = System.IO.File.ReadAllLines("Input/1/input.txt");
 
-        static public void Parts1And2()
+        static public void Solve()
+        {
+            SolveParts1And2();
+        }
+
+        static void SolveParts1And2()
         {
             int frequency = 0;
             List<int> frequencies = new List<int>();

@@ -6,13 +6,13 @@ namespace adventofcode2018
     {
         static string _input = System.IO.File.ReadAllText("Input/5/input.txt");
 
-        static public void Parts1And2()
+        static public void Solve()
         {
-            Part1();
-            Part2();
+            SolvePart1();
+            SolvePart2();
         }
 
-        static void Part1()
+        static void SolvePart1()
         {
             int reactedLength = GetReactedPolymerLength(_input, ' ');
 
@@ -20,7 +20,7 @@ namespace adventofcode2018
             Console.WriteLine("D05P1: " + reactedLength);
         }
 
-        static void Part2()
+        static void SolvePart2()
         {
             int minReactedLength = _input.Length;
             int minReactedUnit = ' ';
